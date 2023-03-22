@@ -26,6 +26,7 @@ def test_import():
         sellers_df = pd.read_csv("./data/sellers_dataset.csv")
         
         logging.info("Testing import_data: SUCCESS")
+        
     except FileNotFoundError as err:
         logging.error("Testing import_data: The file wasn't found")
         raise err
