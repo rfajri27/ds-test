@@ -9,15 +9,14 @@ logging.basicConfig(
     filemode="w",
     format="%(name)s - %(levelname)s - %(message)s")
 
-@pytest.fixture(name="test_import")
 def test_import():
     """
     import all the dataframe
     """
     try:
         customers_df = pd.read_csv("./data/customers_dataset.csv")
-        orders_df = pd.read_csv("./data/orders_dataset")
-        order_items_df = pd.read_csv("./data/order_items_dataset")
+        orders_df = pd.read_csv("./data/orders_dataset.csv")
+        order_items_df = pd.read_csv("./data/order_items_dataset.csv")
         geolocation_df = pd.read_csv("./data/geolocation_dataset.csv")
         order_payments_df = pd.read_csv("./data/order_payments_dataset.csv")
         order_reviews_df = pd.read_csv("./data/order_reviews_dataset.csv")
@@ -30,5 +29,7 @@ def test_import():
     except FileNotFoundError as err:
         logging.error("Testing import_data: The file wasn't found")
         raise err
-    return customers_df, orders_df, order_items_df, order_payments_df
 
+
+if __name__ == "__main__":
+    test_import()
